@@ -45,7 +45,7 @@ function Dashboard() {
         {/* Menu items */}
         <nav className="pt-10 space-y-6 h-32">
             <div className="flex items-center gap-3 pl-5 text-2xl cursor-pointer">
-            <i class=" text-white fa-solid fa-table-columns"></i>
+         <Link to="/view">   <i class=" text-white fa-solid fa-table-columns"></i></Link>
             {isopen && <h1 className="text-white">Dashboard</h1>}
           </div>
 
