@@ -31,17 +31,17 @@ function Product() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
+    <div className=" flex bg-gray-100">
       {/* Sidebar */}
       <div className="w-64">
         <Dashboard />
       </div>
 
       {/* Main Form */}
-      <div className="flex-1 flex items-center justify-center p-6">
+      <div className="flex-1 flex justify-center p-6">
         <form
           onSubmit={handlepost}
-          className="w-full max-w-lg bg-white p-8 rounded-2xl shadow-lg space-y-5"
+          className="w-full h-[600px] max-w-lg bg-white p-8 rounded-2xl shadow-lg space-y-5"
         >
           <h2 className="text-3xl font-bold text-center text-green-600">
             Add Product

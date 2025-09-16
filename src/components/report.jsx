@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Dashboard from "./dashboard";
 
 function ReportPage() {
   const [totalincome, settotalincome] = useState(0);
@@ -20,10 +21,9 @@ function ReportPage() {
   };
 
   const handleClearReport = () => {
-  settotalincome(0);       // تصفير الدخل
-  settopcustomer([]);      // مسح قائمة العملاء
-};
-
+    settotalincome(0);
+    settopcustomer([]);
+  };
 
   useEffect(() => {
     handlegetincome();
@@ -31,17 +31,23 @@ function ReportPage() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
+      {/* Sidebar */}
+      {/* <div className="w-32 md:w-1/4">
+        <Dashboard />
+      </div> */}
+
+      {/* Main Content */}
+      <div className="flex-1 p-4 md:p-6 space-y-8">
         {/* Total Income Card */}
-        <div className="bg-green-500 text-white rounded-2xl shadow-xl p-8 text-center">
-          <h1 className="font-semibold text-3xl">💰 Total Income</h1>
-          <p className="font-bold text-5xl mt-4">${totalincome}</p>
+        <div className="bg-green-500 text-white rounded-2xl shadow-xl p-6 md:p-8 text-center">
+          <h1 className="font-semibold text-2xl md:text-3xl">💰 Total Income</h1>
+          <p className="font-bold text-4xl md:text-5xl mt-4">${totalincome}</p>
         </div>
 
         {/* Top Customers Section */}
-        <div className="bg-white shadow-xl rounded-2xl p-6">
-          <h2 className="text-2xl font-bold text-green-700 mb-6">
+        <div className="bg-white shadow-xl rounded-2xl p-4 md:p-6">
+          <h2 className="text-xl md:text-2xl font-bold text-green-700 mb-4 md:mb-6">
             🏆 Top Customers
           </h2>
 
@@ -51,14 +57,12 @@ function ReportPage() {
             </p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border border-gray-200 rounded-lg">
+              <table className="w-full text-sm md:text-base border border-gray-200 rounded-lg">
                 <thead>
                   <tr className="bg-green-100 text-green-800">
-                    <th className="border px-4 py-3 text-left">Customer</th>
-                    <th className="border px-4 py-3 text-center">Total Spend</th>
-                    <th className="border px-4 py-3 text-center">
-                      Orders Count
-                    </th>
+                    <th className="border px-3 md:px-4 py-2 text-left">Customer</th>
+                    <th className="border px-3 md:px-4 py-2 text-center">Total Spend</th>
+                    <th className="border px-3 md:px-4 py-2 text-center">Orders Count</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -67,13 +71,9 @@ function ReportPage() {
                       key={index}
                       className="hover:bg-gray-50 transition-colors"
                     >
-                      <td className="border px-4 py-3">{item.customer}</td>
-                      <td className="border px-4 py-3 text-center">
-                        ${item.totalSpend}
-                      </td>
-                      <td className="border px-4 py-3 text-center">
-                        {item.ordercount}
-                      </td>
+                      <td className="border px-3 md:px-4 py-2">{item.customer}</td>
+                      <td className="border px-3 md:px-4 py-2 text-center">${item.totalSpend}</td>
+                      <td className="border px-3 md:px-4 py-2 text-center">{item.ordercount}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -81,14 +81,17 @@ function ReportPage() {
             </div>
           )}
         </div>
-      </div>
-      <button
-  onClick={handleClearReport}
-  className="bg-red-500 text-white px-4 py-2 rounded-lg ml-10 mt-5 hover:bg-red-600 transition"
->
-  🗑️ مسح البيانات
-</button>
 
+        {/* Clear Button */}
+        <div className="flex justify-center md:justify-start">
+          <button
+            onClick={handleClearReport}
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+          >
+            🗑️ Remove
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

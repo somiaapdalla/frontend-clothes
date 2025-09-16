@@ -17,6 +17,18 @@ function ProductCards() {
     }
   };
 
+   const searchdata = (id)=>{
+    const key = id.target.value
+    if(key){
+      axios.get(`http://localhost:7000/search/book/${key}`).then((res)=>{
+        setBooks(res.data)
+      })
+    }
+    else{
+      fetchBooks()
+    }
+  }
+
   // Fetch products
   useEffect(() => {
     // if category is "All", send empty object to get all products

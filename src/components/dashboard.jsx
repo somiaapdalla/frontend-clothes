@@ -24,7 +24,7 @@ function Dashboard() {
     <div>
       {/* Sidebar */}
       <div
-        className={`bg-green-900 h-screen transition-all duration-300 ${isopen ? "w-52" : "w-16"
+        className={`bg-green-900 h-[200vh] transition-all duration-300 ${isopen ? "w-52" : "w-16"
           } overflow-hidden`}
       >
         {/* Toggle (top-right) */}
@@ -65,10 +65,7 @@ function Dashboard() {
             {isopen && <h1 className="text-white">Add Product</h1>}
           </div>
 
-          <div className="flex items-center gap-3 pl-5 text-2xl cursor-pointer">
-          <Link to="/customer"> <i className="text-white fa-solid fa-user"></i></Link> 
-            {isopen && <h1 className="text-white">Customer</h1>}
-          </div>
+          {/* x  */}
 
           <div className="flex items-center gap-3 pl-5 text-2xl cursor-pointer">
           <Link to="/report">  <i className="text-white fa-solid fa-flag"></i></Link>

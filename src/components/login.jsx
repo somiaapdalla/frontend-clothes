@@ -22,19 +22,26 @@ function Login() {
 
       const res = await axios.post(url, payload);
 
+      // Check if backend returns role, if not set manually based on active state
+      const userRole = res.data.role || active;
+
       // Prepare user data for localStorage
       const userData = {
         token: res.data.token,
-        role: res.data.role, // use role returned by backend
-        ...(res.data.customer || res.data.admin), // spread customer or admin details
+        role: userRole,
+        ...(res.data.customer || res.data.admin || {}), // spread details if exist
       };
 
       localStorage.setItem("customer", JSON.stringify(userData));
 
-      alert(`${active} login successfully ✅`);
+      alert(`${userRole} login successfully ✅`);
 
-      // Navigate based on role
-      navigate(userData.role === "admin" ? "/dashboard" : "/");
+      // ✅ Navigate based on role
+      if (userRole === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message || "Invalid email or password ❌");
