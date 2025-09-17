@@ -24,7 +24,7 @@ function Dashboard() {
     <div>
       {/* Sidebar */}
       <div
-        className={`bg-green-900 h-[200vh] transition-all duration-300 ${isopen ? "w-52" : "w-16"
+        className={`bg-green-900 h-[300vh] transition-all duration-300 ${isopen ? "w-52" : "w-16"
           } overflow-hidden`}
       >
         {/* Toggle (top-right) */}

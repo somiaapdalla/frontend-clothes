@@ -17,8 +17,10 @@ import CustomerView from "./components/customerview";
 import ReportPage from "./components/report";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ContactView from "./components/contactview";
-import OutfitGenerator from "./components/aotfitgenetor";
-import AvatarScene from "./components/avatarscene";
+import AdminDashboard from "./components/admindashboard";
+
+// import OutfitGenerator from "./components/aotfitgenetor";
+// import AvatarScene from "./components/avatarscene";
 
 
 
@@ -49,8 +51,9 @@ function App() {
           <Route path="/customer" element={<CustomerView />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/view" element={<ContactView />} />
-          <Route path="/outfit" element={<OutfitGenerator />} />
-          <Route path="/avatar" element={<AvatarScene />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          {/* <Route path="/outfit" element={<OutfitGenerator />} /> */}
+          {/* <Route path="/avatar" element={<AvatarScene />} /> */}
 
       </Routes>
       <Footer/>
